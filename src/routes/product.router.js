@@ -9,4 +9,10 @@ router.get('/', async (req, res) => {
     res.send (result)
 })
 
+router.post('/', async (req, res) => {
+    const data =req.body
+    const result = await productManager.create(data)
+    res.send (result)
+})
+
 export default router
