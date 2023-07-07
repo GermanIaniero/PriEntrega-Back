@@ -21,4 +21,14 @@ router.post('/', async (req, res) => {
     res.send (result)
 })
 
+router.delete ('/:idc/:idp', async (req, res) => {
+    const result = await cartManager.getCartById()
+  res.send (result)
+})
+
+
+
+
+
+
 export default router
