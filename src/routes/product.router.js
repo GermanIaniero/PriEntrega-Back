@@ -15,4 +15,27 @@ router.post('/', async (req, res) => {
     res.send (result)
 })
 
+//validar 
+router.put ('/:pid', async (req, res) => {
+    const id = req.params.pid; 
+    const data =req.body
+    if (!data.id) {
+        const result = await productManager.update(data, id)
+        res.send (result)
+    }else {
+        return res.send ("No existe")
+    }
+})
+  
+router.delete ('/:pid', async (req, res) => {
+    const id = parseInt(req.params.pid); 
+    const result = await productManager.delete(id)
+    if (result) {
+        res.send (result)
+    } else {
+        console.log (result)
+        res.send ("Error 404 - No existe")
+    }    
+})
+
 export default router

@@ -21,7 +21,17 @@ router.post('/', async (req, res) => {
     res.send (result)
 })
 
+/*router.update ('/:idc/:idp', async (req, res) => {
+  const cid = parseInt(req.params.idc);
+    const pid = parseInt(req.params.idp);
+    const result = await cartManager.getCartById()
+  res.send (result)
+}) */
+
+
 router.delete ('/:idc/:idp', async (req, res) => {
+  const cid = parseInt(req.params.idc);
+    const pid = parseInt(req.params.idp);
     const result = await cartManager.getCartById()
   res.send (result)
 })

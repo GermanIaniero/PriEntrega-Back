@@ -33,12 +33,23 @@ class FileManager {
         return fs.promises.writeFile(this.filename, JSON.stringify(list))
     }    
 
-    update = async (data) => {
+    update = async (data, id) => {
         const list = await this.get()
-        const idx = list.findIndex(a => a.id == data.id)
-        list [idx] = data
+        const idx = list.findIndex(product => product.id == id)
+        Object.assign(list[idx], data) 
         return fs.promises.writeFile(this.filename, JSON.stringify(list))
-    }    
+    }
+    
+    delete = async (id) => {
+        const list = await this.get()
+        if (!list.find(product => product.id == id)){
+            return false
+        }
+
+        const newList = list.filter(product => product.id !== id)
+        await fs.promises.writeFile(this.filename, JSON.stringify(newList))
+        return ("Producto eliminado")
+    }
 
 }
 
