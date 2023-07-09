@@ -15,7 +15,6 @@ router.post('/', async (req, res) => {
     res.send (result)
 })
 
-//validar 
 router.put ('/:pid', async (req, res) => {
     const id = req.params.pid; 
     const data =req.body

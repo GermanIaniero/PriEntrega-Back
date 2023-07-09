@@ -31,44 +31,7 @@ export default class CartManager extends FileManager{
         }
         return carrito
     }  
-    /*delProduct = async(idc, idp) => { 
-        const cart = await this.getById(idc)
-
-        cart.products.  (idp)
-
-
-
-        const index = this.products.findIndex((product) => product.id === id);
-        if (index === -1) {
-          return;
-        }
     
-        manager.saveProductsToDisk().splice(index, 1);
-        await this.saveProductsToDisk();
-        console.log(`Producto con ID ${id} a sido eliminado`);
-
-
-
-
-        return await this.update (cart)
-
-    }  
-/*
-
-    ////////////////////////////////
-    async deleteProduct(id) {
-        await this.loadProductsFromDisk();
-        const index = this.products.findIndex((product) => product.id === id);
-        if (index === -1) {
-          return;
-        }
-    
-        manager.saveProductsToDisk().splice(index, 1);
-        await this.saveProductsToDisk();
-        console.log(`Producto con ID ${id} a sido eliminado`);
-      }
-////////////////////////////////////////////////////////////////
-*/
 
     list = async () => {
         return await this.get()
