@@ -4,15 +4,16 @@ import CartManager from '../manager/carts.manager.js'
 const router = Router()
 const cartManager=new CartManager()
 
-router.get('/', async (req, res) => {
-    const result = await cartManager.list()
+router.get('/:cid', async (req, res) => {
+    const cid = req.params.cid
+    const result = await cartManager.getCartById(cid)
     res.send (result)
 })
 
-router.get('/:idc/idp', async (req, res) => {
-    const idc = parseInt(req.params.idc)
-    const idp = parseInt(req.params.idp)
-    const result = await cartManager.addProduct(idc, idp)
+router.post('/:cid/product/:pid', async (req, res) => {
+    const cid = parseInt(req.params.cid)
+    const pid = parseInt(req.params.pid)
+    const result = await cartManager.addProduct(cid, pid)
     res.send (result)
 })
 

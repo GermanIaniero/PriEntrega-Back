@@ -1,3 +1,4 @@
+import { response } from "express";
 import FileManager from "./file.manager.js";
 
 export default class CartManager extends FileManager{
@@ -18,22 +19,28 @@ export default class CartManager extends FileManager{
         const cart = await this.getById(idc)
         cart.products.push(idp)
 
-        return await this.update (cart)
+        return await this.update (cart, idp)
 
     }    
 
 
     getCartById = async(id) => { 
-        const carritos = await this.get()
-        const carrito= carritos.find((carritos) => carritos.id === id)
-        if (!carrito) {
-            throw ('El carrito no existe')
-        }
-        return carrito
+        try {
+            const carritos = await this.get()
+            const carrito= carritos.find((carritos) => carritos.id === id)
+        
+            if (!carrito) {
+                throw ('El carrito no existe')
+            } 
+            return carrito
+        } catch (error) {   
+            return("No encontro el carrito")
+        }   
     }  
     
 
     list = async () => {
-        return await this.get()
+        const result =await this.get()
+        return result
     }   
 }

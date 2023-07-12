@@ -8,7 +8,7 @@ class FileManager {
 
     getNextId= (list)=>{
         
-        return (list.length==0) ? 1: list(list.length -1).id + 1
+        return (list.length==0) ? 1: list[list.length -1].id + 1
     }
 
     get = async () => {
