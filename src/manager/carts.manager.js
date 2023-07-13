@@ -17,9 +17,13 @@ export default class CartManager extends FileManager{
 
     addProduct = async(idc, idp) => { 
         const cart = await this.getById(idc)
+
+        //aca enves de hacer cart.products.push(idp) 
+        //recorrer el arreglo de product y buscar su ya existe un producto con el id agregado. Si existe, agregarle +1 en quantity, sino crear el objeto {"product": pid,
+        // "quantity": 1} y pushear eso al arreglo.
         cart.products.push(idp)
 
-        return await this.update (cart, idp)
+        return await this.update (cart, idc)
 
     }    
 
@@ -27,7 +31,7 @@ export default class CartManager extends FileManager{
     getCartById = async(id) => { 
         try {
             const carritos = await this.get()
-            const carrito= carritos.find((carritos) => carritos.id === id)
+            const carrito= carritos.find((carritos) => carritos.id == id)
         
             if (!carrito) {
                 throw ('El carrito no existe')
